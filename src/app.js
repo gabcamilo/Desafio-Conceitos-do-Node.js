@@ -11,11 +11,11 @@ app.use(cors());
 const repositories = [];
 
 app.get("/repositories", (request, response) => {
-  // TODO
+  response.json(repositories);
 });
 
 app.post("/repositories", (request, response) => {
-  const {title, url, techs,} = request.body
+  const {title, url, techs,} = request.body;
 
   const newRepository = {
     id: uuid(),
