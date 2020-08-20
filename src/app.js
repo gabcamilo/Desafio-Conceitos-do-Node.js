@@ -49,11 +49,16 @@ app.put("/repositories/:id", (request, response) => {
     return response.status(400).json({message: 'Repository not found'});
   }
 
-  repositories[repositoryIndex].title=title
-  repositories[repositoryIndex].url=url
-  repositories[repositoryIndex].techs=techs
+  const repository = {
+    id,
+    title,
+    url,
+    techs,
+    likes: repositories[repositoryIndex].likes,
+  }
+  repositories[repositoryIndex] = repository;
 
-  return response.json(repositories[repositoryIndex]);
+  return response.json(repository);
 });
 
 app.delete("/repositories/:id", (request, response) => {
